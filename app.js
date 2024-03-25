@@ -10,9 +10,7 @@ const flujoDeSaludar = addKeyword(['Hola', 'Buenas', 'por favor', 'porfavor', 't
 ])
     .addAnswer(`👋 Hola 🤓 Gracias por comunicarte con la Consultora Multidisciplinaria Quimeras - Icarus Consultores \n \n✅ Si requieres mas información de los cursos, convocatorias o deseas unirte a nuestros grupos de whatsapp, por favor comunícate con uno de los siguientes números: \n \n👉🏻 69616052 Lic. Carla Vargas  \n \n👉🏻 68413858 Atención al Cliente`)
 
-
-
-const main1 = async () => {
+const main = async () => {
     const name = 'bot-1'
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([flujoDeSaludar])
@@ -24,29 +22,9 @@ const main1 = async () => {
         flow: adapterFlow,
         provider: adapterProvider,
         database: adapterDB,
+        botName: name 
     })
-
-
     QRPortalWeb({ name, port: 4050})
 }
 
-const main2 = async () => {
-    const name = 'bot-2'
-    const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flujoDeSaludar])
-    const adapterProvider = createProvider(BaileysProvider, {
-        name
-    })
-
-    createBot({
-        flow: adapterFlow,
-        provider: adapterProvider,
-        database: adapterDB,
-    })
-    
-    
-    QRPortalWeb({ name, port: 4051})
-}
-
-main1()
-main2()
+main()
